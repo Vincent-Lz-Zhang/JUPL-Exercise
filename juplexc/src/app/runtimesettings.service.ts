@@ -1,21 +1,20 @@
 ﻿import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-
+import { AppSettings } from './appSettings';
 import { RuntimeSettings } from './runtimesettings';
 import { RUNTIMESETTINGS_M } from './mock-runtimesettings';
 
 @Injectable()
 export class RuntimeSettingsService {
 
-    private headers = new Headers({ 'Authorization': 'Bearer RJ56/Rw5vEO2WfAdPih5Lw==' });
-    private settingsUrl = 'https://preprod.vbn.care/api2/v2/device/40072?names=RuntimeSettings'; 
+    private headers = new Headers({ 'Authorization': AppSettings.AUTHORIZATION_HEADER });
 
     constructor(private http: Http) { }
 
     getRuntimeSettings(): Promise<RuntimeSettings> {
         //return Promise.resolve(RUNTIMESETTINGS_M);
-        return this.http.get(this.settingsUrl, {
+        return this.http.get(AppSettings.API_ENDPOINT, {
             headers: this.headers
         })
             .toPromise()

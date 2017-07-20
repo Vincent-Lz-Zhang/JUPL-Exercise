@@ -4,10 +4,10 @@ import { RuntimeSettingsService } from './runtimesettings.service';
 import { OnInit } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
-  providers: [RuntimeSettingsService]
+    selector: 'my-app',
+    templateUrl: 'app/app.component.html',
+    styleUrls: ['app/app.component.css'],
+    providers: [RuntimeSettingsService]
 })
 export class AppComponent implements OnInit {
 
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     //data: Promise<RuntimeSettings>;
     //reportInterval: number;
     //pingInterval: number;
-    
+
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
     getRuntimeSettings(): void {
@@ -27,15 +27,9 @@ export class AppComponent implements OnInit {
         );
         */
         this.runtimeSettingsService.getRuntimeSettings().then(
-            settings => {
-                /*
-                this.reportInterval = settings.ReportInterval;
-                this.pingInterval = settings.PingInterval;
-                */
-                Object.assign(this, settings);
-            }
+            settings => Object.assign(this, settings)
         );
-        
+
     }
 
     ngOnInit(): void {

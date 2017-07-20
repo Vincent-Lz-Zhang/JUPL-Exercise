@@ -98,6 +98,7 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\appSettings.ts" />
     <TypeScriptCompile Include="src\app\mock-runtimesettings.ts" />
     <TypeScriptCompile Include="src\app\runtimesettings.service.ts" />
     <TypeScriptCompile Include="src\app\runtimesettings.ts" />
