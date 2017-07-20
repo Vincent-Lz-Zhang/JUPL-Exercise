@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
     //@Input()
     //runtimeSettings: RuntimeSettings;
     //data: Promise<RuntimeSettings>;
-    reportInterval: number;
+    //reportInterval: number;
+    //pingInterval: number;
     
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
@@ -26,8 +27,15 @@ export class AppComponent implements OnInit {
         );
         */
         this.runtimeSettingsService.getRuntimeSettings().then(
-            settings => this.reportInterval = settings.ReportInterval
+            settings => {
+                /*
+                this.reportInterval = settings.ReportInterval;
+                this.pingInterval = settings.PingInterval;
+                */
+                Object.assign(this, settings);
+            }
         );
+        
     }
 
     ngOnInit(): void {

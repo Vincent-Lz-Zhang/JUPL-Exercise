@@ -1,8 +1,8 @@
 ﻿import { RuntimeSettings } from './runtimesettings';
 
 export const RUNTIMESETTINGS_M: RuntimeSettings = {
-    ReportInterval: 0,
-    PingInterval: 0,
+    ReportInterval: 10,
+    PingInterval: 10,
     PreAlarmPeriod: 0,
     AdherenceCheckInterval: 0,
     AlarmClearTimeout: 0,
