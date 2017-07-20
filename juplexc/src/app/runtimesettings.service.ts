@@ -4,7 +4,7 @@ import { RUNTIMESETTINGS_M } from './mock-runtimesettings';
 
 @Injectable()
 export class RuntimeSettingsService {
-    getRuntimeSettings(): RuntimeSettings {
-        return RUNTIMESETTINGS_M;
+    getRuntimeSettings(): Promise<RuntimeSettings> {
+        return Promise.resolve(RUNTIMESETTINGS_M);
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RuntimeSettings } from './runtimesettings';
 import { RuntimeSettingsService } from './runtimesettings.service';
 import { OnInit } from '@angular/core';
@@ -11,12 +11,14 @@ import { OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    runtimeSettings: RuntimeSettings;
+    @Input() runtimeSettings: RuntimeSettings;
 
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
     getRuntimeSettings(): void {
-        this.runtimeSettings = this.runtimeSettingsService.getRuntimeSettings();
+        this.runtimeSettingsService.getRuntimeSettings().then(
+            settings => this.runtimeSettings = settings
+        );
     }
 
     ngOnInit(): void {
