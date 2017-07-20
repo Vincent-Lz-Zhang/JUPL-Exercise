@@ -1,3 +1,8 @@
 ﻿
-<h2>This works: {{(data | async)?.DeviceName}}</h2>
 
+
+<div class="form-row">
+    <label class="form-label">Device Name: </label>
+    <input [(ngModel)]="(data | async)?.DeviceName" 
+           placeholder="device name">
+</div>
