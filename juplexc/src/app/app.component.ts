@@ -12,18 +12,22 @@ import { OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
     //@Input()
-    runtimeSettings: RuntimeSettings;
-    data: Promise<RuntimeSettings>;
+    //runtimeSettings: RuntimeSettings;
+    //data: Promise<RuntimeSettings>;
+    reportInterval: number;
     
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
     getRuntimeSettings(): void {
-        this.data = this.runtimeSettingsService.getRuntimeSettings();
+        //this.data = this.runtimeSettingsService.getRuntimeSettings();
         /*
         this.runtimeSettingsService.getRuntimeSettings().then(
             settings => this.runtimeSettings = settings
         );
         */
+        this.runtimeSettingsService.getRuntimeSettings().then(
+            settings => this.reportInterval = settings.ReportInterval
+        );
     }
 
     ngOnInit(): void {
