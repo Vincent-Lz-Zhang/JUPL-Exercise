@@ -13,13 +13,17 @@ export class AppComponent implements OnInit {
 
     //@Input()
     runtimeSettings: RuntimeSettings;
+    data: Promise<RuntimeSettings>;
     
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
     getRuntimeSettings(): void {
+        this.data = this.runtimeSettingsService.getRuntimeSettings();
+        /*
         this.runtimeSettingsService.getRuntimeSettings().then(
             settings => this.runtimeSettings = settings
         );
+        */
     }
 
     ngOnInit(): void {
