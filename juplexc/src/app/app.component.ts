@@ -11,8 +11,9 @@ import { OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-    @Input() runtimeSettings: RuntimeSettings;
-
+    //@Input()
+    runtimeSettings: RuntimeSettings;
+    
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
     getRuntimeSettings(): void {
