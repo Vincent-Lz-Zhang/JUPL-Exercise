@@ -1,4 +1,9 @@
-﻿<div class="form-row">
+﻿
+<h2>Runtime Settings</h2>
+<div style="color:crimson" class="form-prompt" *ngIf="isLoading">loading data...</div>
+
+
+<div class="form-row">
     <label class="form-label" for="ReportInterval">Report Interval: </label>
     <input [(ngModel)]="reportInterval"
            id="ReportInterval"
@@ -110,4 +115,4 @@
            placeholder="Verbose Logging">
 </div>
 
-<button (click)="save()">Save Changes</button>
+<button style="margin-top:20px" (click)="save()">Save Changes</button>

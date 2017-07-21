@@ -32,6 +32,9 @@ export class AppComponent implements OnInit {
     deviceName: string;
     verboseLogging: boolean;
 
+    // control the visibility of loading animation
+    isLoading: boolean = false;
+
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
     getRuntimeSettings(): void {
@@ -41,6 +44,8 @@ export class AppComponent implements OnInit {
             settings => this.runtimeSettings = settings
         );
         */
+        // displays the loading animation
+        this.isLoading = true;
         this.runtimeSettingsService.getRuntimeSettings().then(
             //settings => Object.assign(this, settings)
             // TODO: might use destructuring
@@ -62,10 +67,13 @@ export class AppComponent implements OnInit {
                 this.demoMode = settings.DemoMode;
                 this.deviceName = settings.DeviceName;
                 this.verboseLogging = settings.VerboseLogging;
+                // hide the loading animation
+                this.isLoading = false;
             }
         )
-            .catch(function (reason) {
+            .catch(reason => {
                 console.error('Oops¬ ', reason); 
+                this.isLoading = false;
                 // TODO: visual prompt to user
             });
         
@@ -84,29 +92,35 @@ export class AppComponent implements OnInit {
         //console.log('here: ' + this.deviceName);
         let settings: RuntimeSettings = {
             ReportInterval: Number(this.reportInterval),
-            PingInterval: this.pingInterval,
-            PreAlarmPeriod: this.preAlarmPeriod,
-            AdherenceCheckInterval: this.adherenceCheckInterval,
-            AlarmClearTimeout: this.alarmClearTimeout,
-            AlarmCancelTimeout: this.alarmCancelTimeout,
-            DailyReportInterval: this.dailyReportInterval,
-            GeoLocationRetryCount: this.geoLocationRetryCount,
-            GeoLocationHighAccuracy: this.geoLocationHighAccuracy,
-            GeoLocationTimeOut: this.geoLocationTimeOut,
-            GeoMaxAgeTimeOut: this.geoMaxAgeTimeOut,
+            PingInterval: Number(this.pingInterval),
+            PreAlarmPeriod: Number(this.preAlarmPeriod),
+            AdherenceCheckInterval: Number(this.adherenceCheckInterval),
+            AlarmClearTimeout: Number(this.alarmClearTimeout),
+            AlarmCancelTimeout: Number(this.alarmCancelTimeout),
+            DailyReportInterval: Number(this.dailyReportInterval),
+            GeoLocationRetryCount: Number(this.geoLocationRetryCount),
+            GeoLocationHighAccuracy: Boolean(this.geoLocationHighAccuracy),
+            GeoLocationTimeOut: Number(this.geoLocationTimeOut),
+            GeoMaxAgeTimeOut: Number(this.geoMaxAgeTimeOut),
             CmfPhoneNumber: this.cmfPhoneNumber,
-            PalmTouchTrigger: this.palmTouchTrigger,
-            TouchTriggerCooldownPeriod: this.touchTriggerCooldownPeriod,
-            DemoMode: this.demoMode,
+            PalmTouchTrigger: Boolean(this.palmTouchTrigger),
+            TouchTriggerCooldownPeriod: Number(this.touchTriggerCooldownPeriod),
+            DemoMode: Boolean(this.demoMode),
             DeviceName: this.deviceName,
-            VerboseLogging: this.verboseLogging
+            VerboseLogging: Boolean(this.verboseLogging)
         };
+        // displays the loading animation
+        this.isLoading = true;
+        // 
         this.runtimeSettingsService.updateRuntimeSettings(settings).then(
-            function () {
+            () => {
                 console.log('returned to component method');
+                // hide the loading animation
+                this.isLoading = false;
             })
-            .catch(function (reason) {
-            console.error('Oops¬ ', reason);
+            .catch(reason => {
+                console.error('Oops¬ ', reason);
+                this.isLoading = false;
             // TODO: visual prompt to user
         });
 

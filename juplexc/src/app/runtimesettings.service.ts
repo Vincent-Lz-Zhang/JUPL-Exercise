@@ -8,10 +8,8 @@ import { RUNTIMESETTINGS_M } from './mock-runtimesettings';
 @Injectable()
 export class RuntimeSettingsService {
 
-    private headers = new Headers({ 'Authorization': AppSettings.AUTHORIZATION_HEADER });
-    private headers_put: Headers  = new Headers(
-        { 'Authorization': AppSettings.AUTHORIZATION_HEADER }
-    );
+    private headers: Headers = new Headers({ 'Authorization': AppSettings.AUTHORIZATION_HEADER });
+    private headers_put: Headers  = new Headers({ 'Authorization': AppSettings.AUTHORIZATION_HEADER });
     
     constructor(private http: Http) {
         this.headers_put.append('Content-Type', 'application/json');

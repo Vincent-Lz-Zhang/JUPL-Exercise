@@ -5,3 +5,11 @@
     width: 260px;
     display: inline-flex;
 }
+
+.form-button {
+    margin-top: 20px;
+}
+
+.form-prompt {
+    color: brown;
+}
