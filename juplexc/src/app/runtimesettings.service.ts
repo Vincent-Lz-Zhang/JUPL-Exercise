@@ -21,18 +21,23 @@ export class RuntimeSettingsService {
             headers: this.headers
         })
             .toPromise()
-            .then(response => response.json().Model.RuntimeSettings as RuntimeSettings)
+            .then(function (response) { // arrow function seems not to be debugged with breakpoint
+                let temp: RuntimeSettings = response.json().Model.RuntimeSettings;
+                return temp;
+            })
             .catch(this.handleError);
     }
 
     updateRuntimeSettings(settings: RuntimeSettings): Promise<RuntimeSettings> {
+        // assemble the data
         let data: any = {
             RuntimeSettings: settings
         };
+        // send the PUT request
         return this.http
             .put(AppSettings.API_ENDPOINT, JSON.stringify(data), { headers: this.headers_put })
             .toPromise()
-            .then(this.getRuntimeSettings.bind(this))
+            .then(this.getRuntimeSettings.bind(this))   // after the update request succeeds, grab the data again, and chain up the promises
             .catch(this.handleError);   // TODO: may handle twice
     }
 
