@@ -126,7 +126,7 @@ describe('RuntimeSettingsService (mockBackend)', () => {
             response = new Response(options);
         }));
 
-        it('should have expected fake settings (then)', async(inject([], () => {
+        it('should have expected fake settings of ReportInterval', async(inject([], () => {
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
 
             service.getRuntimeSettings()
@@ -135,8 +135,45 @@ describe('RuntimeSettingsService (mockBackend)', () => {
                 });
         })));
 
+        it('should have expected fake settings of GeoLocationHighAccuracy', async(inject([], () => {
+            backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+            service.getRuntimeSettings()
+                .then(settings => {
+                    expect(settings.GeoLocationHighAccuracy).toBe(true, 'should have expected true');
+                });
+        })));
+
+        it('should have expected fake settings of CmfPhoneNumber, PalmTouchTrigger and TouchTriggerCooldownPeriod', async(inject([], () => {
+            backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+            service.getRuntimeSettings()
+                .then(settings => {
+                    expect(
+                        settings.CmfPhoneNumber == "+64123456789"
+                        && settings.PalmTouchTrigger == true
+                        && settings.TouchTriggerCooldownPeriod == 30
+                    ).toBeTruthy('should have expected values');
+                });
+        })));
 
 
+
+        it('should treat 404 as an exception', async(inject([], () => {
+            let resp = new Response(new ResponseOptions({ status: 404 }));
+            backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+            service.getRuntimeSettings()
+                .then(s => {
+                    fail('should not respond');
+                })
+                .catch(err => {
+                    console.log('Vince: ' + err);
+                    expect(err).toContain('Cannot read property ');
+                    return '4o4'; // failure is the expected test result
+                });
+            
+        })));
 
 
 
