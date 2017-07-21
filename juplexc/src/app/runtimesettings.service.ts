@@ -9,8 +9,13 @@ import { RUNTIMESETTINGS_M } from './mock-runtimesettings';
 export class RuntimeSettingsService {
 
     private headers = new Headers({ 'Authorization': AppSettings.AUTHORIZATION_HEADER });
-
-    constructor(private http: Http) { }
+    private headers_put: Headers  = new Headers(
+        { 'Authorization': AppSettings.AUTHORIZATION_HEADER }
+    );
+    
+    constructor(private http: Http) {
+        this.headers_put.append('Content-Type', 'application/json');
+    }
 
     getRuntimeSettings(): Promise<RuntimeSettings> {
         //return Promise.resolve(RUNTIMESETTINGS_M);
@@ -19,6 +24,21 @@ export class RuntimeSettingsService {
         })
             .toPromise()
             .then(response => response.json().Model.RuntimeSettings as RuntimeSettings)
+            .catch(this.handleError);
+    }
+
+    updateRuntimeSettings(settings: RuntimeSettings): Promise<RuntimeSettings> {
+        let data: any = {
+            RuntimeSettings: settings
+        };
+        return this.http
+            .put(AppSettings.API_ENDPOINT, JSON.stringify(data), { headers: this.headers_put })
+            .toPromise()
+            .then(function () {
+                //console.log('the put has returned.');
+                return this.getRuntimeSettings();
+
+            })
             .catch(this.handleError);
     }
 
