@@ -63,8 +63,12 @@ export class AppComponent implements OnInit {
                 this.deviceName = settings.DeviceName;
                 this.verboseLogging = settings.VerboseLogging;
             }
-        );
-
+        )
+            .catch(function (reason) {
+                console.error('Oops¬ ', reason); 
+                // TODO: visual prompt to user
+            });
+        
     }
 
     ngOnInit(): void {
@@ -100,9 +104,11 @@ export class AppComponent implements OnInit {
         this.runtimeSettingsService.updateRuntimeSettings(settings).then(
             function () {
                 console.log('returned to component method');
-            }
-
-        );
+            })
+            .catch(function (reason) {
+            console.error('Oops¬ ', reason);
+            // TODO: visual prompt to user
+        });
 
     }
 

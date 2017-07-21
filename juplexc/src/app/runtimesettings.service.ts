@@ -34,16 +34,21 @@ export class RuntimeSettingsService {
         return this.http
             .put(AppSettings.API_ENDPOINT, JSON.stringify(data), { headers: this.headers_put })
             .toPromise()
-            .then(function () {
+            .then(this.getRuntimeSettings.bind(this)
+
+/*
+            function () {
                 //console.log('the put has returned.');
                 return this.getRuntimeSettings();
+            }
+                */
 
-            })
-            .catch(this.handleError);
+            )
+            .catch(this.handleError);   // TODO: may handle twice
     }
 
     private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
+        console.error('An error occurred', error);  
         return Promise.reject(error.message || error);
     }
 }
