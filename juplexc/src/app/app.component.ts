@@ -4,9 +4,10 @@ import { RuntimeSettingsService } from './runtimesettings.service';
 import { OnInit } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'my-app',
-    templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css'],
+    templateUrl: 'app.component.html', 
+    styleUrls: ['app.component.css'],
     providers: [RuntimeSettingsService]
 })
 export class AppComponent implements OnInit {

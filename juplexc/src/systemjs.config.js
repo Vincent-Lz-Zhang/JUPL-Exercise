@@ -5,8 +5,9 @@
 (function (global) {
   System.config({
     paths: {
-      // paths serve as alias /base/node_modules/
-      'npm:': '/node_modules/'
+      // paths serve as alias
+	  // Vincent: to be able to run the test, use '/base/node_modules/'
+      'npm:': '/base/node_modules/'
     },
     // map tells the System loader where to look for things
     map: {
