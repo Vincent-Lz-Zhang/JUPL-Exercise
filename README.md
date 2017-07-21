@@ -64,3 +64,6 @@ https://semaphoreci.com/community/tutorials/testing-angular-2-http-services-with
 http://www.c-sharpcorner.com/article/how-to-perform-unit-test-using-jasmine-in-angular-2-day-282/
 
 https://stackoverflow.com/questions/17469928/how-to-use-multiple-expect-in-jasmine
+
+https://stackoverflow.com/questions/40373099/angular2-quickstart-tutorial-breaking-karma-tests-cant-bind-to-ngmodel-sin
+https://stackoverflow.com/questions/40086629/error-no-provider-for-httpservice-in-karma-test
