@@ -32,28 +32,7 @@ class ff {
     Model: mm;
 }
 
-function makeRuntimeSettings(): ff {
-    /*
-    return {
-        ReportInterval: 10,
-        PingInterval: 9,
-        PreAlarmPeriod: 8,
-        AdherenceCheckInterval: 7,
-        AlarmClearTimeout: 6,
-        AlarmCancelTimeout: 5,
-        DailyReportInterval: 4,
-        GeoLocationRetryCount: 3,
-        GeoLocationHighAccuracy: true,
-        GeoLocationTimeOut: 2,
-        GeoMaxAgeTimeOut: 1,
-        CmfPhoneNumber: 'gf',
-        PalmTouchTrigger: false,
-        TouchTriggerCooldownPeriod: 67,
-        DemoMode: false,
-        DeviceName: 'rf',
-        VerboseLogging: true
-    }
-    */
+function makeResponseData(): ff {
     return {
         VigilId: 40072,
         Uid: "R3AJ1001EMH",
@@ -79,7 +58,28 @@ function makeRuntimeSettings(): ff {
             }
         }
     }
+}
 
+function makeRuntimeSettings(): RuntimeSettings {
+    return {
+        ReportInterval: 10,
+        PingInterval: 9,
+        PreAlarmPeriod: 8,
+        AdherenceCheckInterval: 7,
+        AlarmClearTimeout: 6,
+        AlarmCancelTimeout: 5,
+        DailyReportInterval: 4,
+        GeoLocationRetryCount: 3,
+        GeoLocationHighAccuracy: true,
+        GeoLocationTimeOut: 2,
+        GeoMaxAgeTimeOut: 1,
+        CmfPhoneNumber: "+64123456789",
+        PalmTouchTrigger: false,
+        TouchTriggerCooldownPeriod: 67,
+        DemoMode: false,
+        DeviceName: 'bumblebee',
+        VerboseLogging: true
+    }
 }
 
 describe('RuntimeSettingsService (mockBackend)', () => {
@@ -114,14 +114,12 @@ describe('RuntimeSettingsService (mockBackend)', () => {
     describe('when getRuntimeSettings', () => {
         let backend: MockBackend;
         let service: RuntimeSettingsService;
-        let settings_be: string;
         let response: Response;
 
         beforeEach(inject([Http, XHRBackend], (http: Http, be: MockBackend) => {
             backend = be;
             service = new RuntimeSettingsService(http);
-            settings_be = JSON.stringify(makeRuntimeSettings());
-            let options = new ResponseOptions({ status: 200, body: makeRuntimeSettings() });
+            let options = new ResponseOptions({ status: 200, body: makeResponseData() });
             response = new Response(options);
         }));
 
@@ -175,6 +173,56 @@ describe('RuntimeSettingsService (mockBackend)', () => {
     });
 
 
+    describe('when updateRuntimeSettings', () => {
+        let backend: MockBackend;
+        let service: RuntimeSettingsService;
+        //let settings_be: string;
+        let response: Response;
+
+        beforeEach(inject([Http, XHRBackend], (http: Http, be: MockBackend) => {
+            backend = be;
+            service = new RuntimeSettingsService(http);
+            //settings_be = JSON.stringify(makeRuntimeSettings());
+            let options = new ResponseOptions({ status: 204 });
+            response = new Response(options);
+        }));
+
+
+        it('should have expected data in the request', async(inject([], () => {
+            backend.connections.subscribe(
+                (c: MockConnection) => {
+                    let body = c.request.json();
+                    expect(
+                        body.RuntimeSettings.AdherenceCheckInterval == 7
+                        && body.RuntimeSettings.AlarmCancelTimeout == 5
+                        && body.RuntimeSettings.AlarmClearTimeout == 6
+                        && body.RuntimeSettings.CmfPhoneNumber == "+64123456789"
+                        && body.RuntimeSettings.DailyReportInterval == 4
+                        && body.RuntimeSettings.DemoMode == false
+                        && body.RuntimeSettings.DeviceName == "bumblebee"
+                        && body.RuntimeSettings.GeoLocationHighAccuracy == true
+                        && body.RuntimeSettings.GeoLocationRetryCount == 3
+                        && body.RuntimeSettings.GeoLocationTimeOut == 2
+                        && body.RuntimeSettings.GeoMaxAgeTimeOut == 1
+                        && body.RuntimeSettings.PalmTouchTrigger == false
+                        && body.RuntimeSettings.PingInterval == 9
+                        && body.RuntimeSettings.PreAlarmPeriod == 8
+                        && body.RuntimeSettings.ReportInterval == 10
+                        && body.RuntimeSettings.TouchTriggerCooldownPeriod == 67
+                        && body.RuntimeSettings.VerboseLogging == true
+                    ).toBeTruthy('the data pushed through the PUT api should be....');
+                    //console.log(body);
+                    c.mockRespond(response);
+                }
+
+            );
+
+            service.updateRuntimeSettings(makeRuntimeSettings());
+
+          
+        })));
+
+    });
 
 
 
