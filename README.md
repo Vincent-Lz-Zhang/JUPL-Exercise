@@ -54,10 +54,11 @@ https://stackoverflow.com/questions/34840969/cannot-find-a-differ-supporting-obj
 
 Unit Test
 https://angular.io/guide/testing
+https://angular.io/generated/live-examples/testing/app-specs.eplnkr.html
 https://taco.visualstudio.com/en-us/docs/unit-test-03-basic-testing/
-
+https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2
 http://angularfirst.com/getting-started-with-npm-in-visual-studio/
-
+https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2
 https://semaphoreci.com/community/tutorials/testing-angular-2-http-services-with-jasmine
 
 http://www.c-sharpcorner.com/article/how-to-perform-unit-test-using-jasmine-in-angular-2-day-282/
