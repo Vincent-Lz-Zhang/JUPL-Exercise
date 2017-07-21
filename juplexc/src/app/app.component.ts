@@ -35,10 +35,10 @@ export class AppComponent implements OnInit {
 
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
-    getRuntimeSettings(): void {
+    getRuntimeSettings(): Promise<any> {
         // displays the loading animation
         this.isLoading = true;
-        this.runtimeSettingsService.getRuntimeSettings().then(
+        return this.runtimeSettingsService.getRuntimeSettings().then(
             // TODO: might use destructuring
             settings => {
                 this.reportInterval = settings.ReportInterval;
@@ -108,9 +108,8 @@ export class AppComponent implements OnInit {
         this.runtimeSettingsService.updateRuntimeSettings(settings).then(
             () => {
                 console.log('returned to component method');
-                // hide the loading animation
-                this.isLoading = false;
                 this.updated = true;
+                return this.getRuntimeSettings();
             })
             .catch(reason => {
                 console.error('Oops¬ ', reason);

@@ -39,7 +39,6 @@ export class RuntimeSettingsService {
         return this.http
             .put(AppSettings.API_ENDPOINT, JSON.stringify(data), { headers: this.headers_put })
             .toPromise()
-            .then(this.getRuntimeSettings.bind(this))   // after the update request succeeds, grab the data again, and chain up the promises
             .catch(this.handleError);   // TODO: may handle twice
     }
 

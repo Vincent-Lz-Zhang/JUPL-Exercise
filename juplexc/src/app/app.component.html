@@ -58,15 +58,6 @@
 </div>
 
 <div class="form-row">
-    <label class="form-label" for="PreAlarmPeriod">Pre Alarm Period: </label>
-    <input [(ngModel)]="preAlarmPeriod"
-           (change)="formChanged()"
-           id="PreAlarmPeriod"
-           name="PreAlarmPeriod"
-           placeholder="Pre Alarm Period">
-</div>
-
-<div class="form-row">
     <label class="form-label" for="DailyReportInterval">Daily Report Interval: </label>
     <input [(ngModel)]="dailyReportInterval"
            (change)="formChanged()"
@@ -94,12 +85,30 @@
 </div>
 
 <div class="form-row">
-    <label class="form-label" for="DeviceName">Device Name: </label>
-    <input [(ngModel)]="deviceName"
+    <label class="form-label" for="GeoLocationTimeOut">Geo Location Time Out: </label>
+    <input [(ngModel)]="geoLocationTimeOut"
            (change)="formChanged()"
-           id="DeviceName"
-           name="DeviceName"
-           placeholder="Device Name">
+           id="GeoLocationTimeOut"
+           name="GeoLocationTimeOut"
+           placeholder="Geo Location Time Out">
+</div>
+
+<div class="form-row">
+    <label class="form-label" for="GeoMaxAgeTimeOut">Geo Max Age Time Out: </label>
+    <input [(ngModel)]="geoMaxAgeTimeOut"
+           (change)="formChanged()"
+           id="GeoMaxAgeTimeOut"
+           name="GeoMaxAgeTimeOut"
+           placeholder="Geo Max Age Time Out">
+</div>
+
+<div class="form-row">
+    <label class="form-label" for="CmfPhoneNumber">Cmf Phone Number: </label>
+    <input [(ngModel)]="cmfPhoneNumber"
+           (change)="formChanged()"
+           id="CmfPhoneNumber"
+           name="CmfPhoneNumber"
+           placeholder="Cmf Phone Number">
 </div>
 
 <div class="form-row">
@@ -112,12 +121,30 @@
 </div>
 
 <div class="form-row">
+    <label class="form-label" for="TouchTriggerCooldownPeriod">Touch Trigger Cooldown Period: </label>
+    <input [(ngModel)]="touchTriggerCooldownPeriod"
+           (change)="formChanged()"
+           id="TouchTriggerCooldownPeriod"
+           name="TouchTriggerCooldownPeriod"
+           placeholder="Cmf Phone Number">
+</div>
+
+<div class="form-row">
     <label class="form-label" for="DemoMode">Demo Mode: </label>
     <input type="checkbox" 
            [checked]="demoMode" 
            (change)="demoMode = !demoMode; formChanged()"
            id="DemoMode"
            name="DemoMode" />
+</div>
+
+<div class="form-row">
+    <label class="form-label" for="DeviceName">Device Name: </label>
+    <input [(ngModel)]="deviceName"
+           (change)="formChanged()"
+           id="DeviceName"
+           name="DeviceName"
+           placeholder="Device Name">
 </div>
 
 <div class="form-row">
