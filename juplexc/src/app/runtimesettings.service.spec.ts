@@ -115,7 +115,6 @@ describe('RuntimeSettingsService (mockBackend)', () => {
         let backend: MockBackend;
         let service: RuntimeSettingsService;
         let settings_be: string;
-        //let settings_be: RuntimeSettings;
         let response: Response;
 
         beforeEach(inject([Http, XHRBackend], (http: Http, be: MockBackend) => {
@@ -157,27 +156,26 @@ describe('RuntimeSettingsService (mockBackend)', () => {
                 });
         })));
 
-
-
         it('should treat 404 as an exception', async(inject([], () => {
             let resp = new Response(new ResponseOptions({ status: 404 }));
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
             service.getRuntimeSettings()
-                .then(s => {
+                .then(s => {    // failure is the expected test result
                     fail('should not respond');
                 })
                 .catch(err => {
-                    console.log('Vince: ' + err);
-                    expect(err).toContain('Cannot read property ');
-                    return '4o4'; // failure is the expected test result
+                    //console.log('Vince: ' + err);
+                    expect(err).toContain('Cannot read property '); // TODO: seems to be useless ?
+                    return '4o4';   // TODO: is it necessary?
                 });
             
         })));
-
-
-
-
+        
     });
+
+
+
+
 
 });
