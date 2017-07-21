@@ -10,10 +10,7 @@ import { OnInit } from '@angular/core';
     providers: [RuntimeSettingsService]
 })
 export class AppComponent implements OnInit {
-
-    //@Input()
-    //runtimeSettings: RuntimeSettings;
-    //data: Promise<RuntimeSettings>;
+    
     reportInterval: number;
     pingInterval: number;
     preAlarmPeriod: number;
@@ -38,16 +35,9 @@ export class AppComponent implements OnInit {
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
     getRuntimeSettings(): void {
-        //this.data = this.runtimeSettingsService.getRuntimeSettings();
-        /*
-        this.runtimeSettingsService.getRuntimeSettings().then(
-            settings => this.runtimeSettings = settings
-        );
-        */
         // displays the loading animation
         this.isLoading = true;
         this.runtimeSettingsService.getRuntimeSettings().then(
-            //settings => Object.assign(this, settings)
             // TODO: might use destructuring
             settings => {
                 this.reportInterval = settings.ReportInterval;
@@ -69,8 +59,7 @@ export class AppComponent implements OnInit {
                 this.verboseLogging = settings.VerboseLogging;
                 // hide the loading animation
                 this.isLoading = false;
-            }
-        )
+            })
             .catch(reason => {
                 console.error('Oops¬ ', reason); 
                 this.isLoading = false;

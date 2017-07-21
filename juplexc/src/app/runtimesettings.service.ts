@@ -32,16 +32,7 @@ export class RuntimeSettingsService {
         return this.http
             .put(AppSettings.API_ENDPOINT, JSON.stringify(data), { headers: this.headers_put })
             .toPromise()
-            .then(this.getRuntimeSettings.bind(this)
-
-/*
-            function () {
-                //console.log('the put has returned.');
-                return this.getRuntimeSettings();
-            }
-                */
-
-            )
+            .then(this.getRuntimeSettings.bind(this))
             .catch(this.handleError);   // TODO: may handle twice
     }
 
