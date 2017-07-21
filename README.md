@@ -14,6 +14,7 @@ https://stackoverflow.com/questions/34980973/how-to-bind-a-promise-to-a-componen
 https://stackoverflow.com/questions/41453663/how-to-bind-dynamically-created-form-fields-to-an-object-in-angular-2
 https://stackoverflow.com/questions/34464108/angular2-set-headers-for-every-request
 https://stackoverflow.com/questions/39776591/angular2-global-configuration-file
+https://stackoverflow.com/questions/35163009/angular-2-show-and-hide-an-element
 
 
 form

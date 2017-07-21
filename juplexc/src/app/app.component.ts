@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
 
     // control the visibility of loading animation
     isLoading: boolean = false;
+    updated: boolean = false;
 
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
@@ -76,6 +77,9 @@ export class AppComponent implements OnInit {
         this.updateRuntimeSettings();
     }
 
+    formChanged(): void {
+        this.updated = false;
+    }
 
     updateRuntimeSettings(): void {
         //console.log('here: ' + this.deviceName);
@@ -106,6 +110,7 @@ export class AppComponent implements OnInit {
                 console.log('returned to component method');
                 // hide the loading animation
                 this.isLoading = false;
+                this.updated = true;
             })
             .catch(reason => {
                 console.error('Oops¬ ', reason);

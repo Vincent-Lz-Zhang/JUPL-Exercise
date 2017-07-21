@@ -6,6 +6,7 @@
 <div class="form-row">
     <label class="form-label" for="ReportInterval">Report Interval: </label>
     <input [(ngModel)]="reportInterval"
+           (change)="formChanged()"
            id="ReportInterval"
            name="ReportInterval"
            placeholder="Report Interval">
@@ -14,6 +15,7 @@
 <div class="form-row">
     <label class="form-label" for="PingInterval">Ping Interval: </label>
     <input [(ngModel)]="pingInterval"
+           (change)="formChanged()"
            id="PingInterval"
            name="PingInterval"
            placeholder="Ping Interval">
@@ -22,6 +24,7 @@
 <div class="form-row">
     <label class="form-label" for="PreAlarmPeriod">Pre Alarm Period: </label>
     <input [(ngModel)]="preAlarmPeriod"
+           (change)="formChanged()"
            id="PreAlarmPeriod"
            name="PreAlarmPeriod"
            placeholder="Pre Alarm Period">
@@ -30,6 +33,7 @@
 <div class="form-row">
     <label class="form-label" for="AdherenceCheckInterval">Adherence Check Interval: </label>
     <input [(ngModel)]="adherenceCheckInterval"
+           (change)="formChanged()"
            id="AdherenceCheckInterval"
            name="AdherenceCheckInterval"
            placeholder="Adherence Check Interval">
@@ -38,6 +42,7 @@
 <div class="form-row">
     <label class="form-label" for="AlarmClearTimeout">Alarm Clear Timeout: </label>
     <input [(ngModel)]="alarmClearTimeout"
+           (change)="formChanged()"
            id="AlarmClearTimeout"
            name="AlarmClearTimeout"
            placeholder="Alarm Clear Timeout">
@@ -46,6 +51,7 @@
 <div class="form-row">
     <label class="form-label" for="AlarmCancelTimeout">Alarm Cancel Timeout: </label>
     <input [(ngModel)]="alarmCancelTimeout"
+           (change)="formChanged()"
            id="AlarmCancelTimeout"
            name="AlarmCancelTimeout"
            placeholder="Alarm Cancel Timeout">
@@ -54,6 +60,7 @@
 <div class="form-row">
     <label class="form-label" for="PreAlarmPeriod">Pre Alarm Period: </label>
     <input [(ngModel)]="preAlarmPeriod"
+           (change)="formChanged()"
            id="PreAlarmPeriod"
            name="PreAlarmPeriod"
            placeholder="Pre Alarm Period">
@@ -62,6 +69,7 @@
 <div class="form-row">
     <label class="form-label" for="DailyReportInterval">Daily Report Interval: </label>
     <input [(ngModel)]="dailyReportInterval"
+           (change)="formChanged()"
            id="DailyReportInterval"
            name="DailyReportInterval"
            placeholder="Daily Report Interval">
@@ -70,6 +78,7 @@
 <div class="form-row">
     <label class="form-label" for="GeoLocationRetryCount">Geo Location Retry Count: </label>
     <input [(ngModel)]="geoLocationRetryCount"
+           (change)="formChanged()"
            id="GeoLocationRetryCount"
            name="GeoLocationRetryCount"
            placeholder="Geo Location Retry Count">
@@ -77,15 +86,17 @@
 
 <div class="form-row">
     <label class="form-label" for="GeoLocationHighAccuracy">Geo Location High Accuracy: </label>
-    <input [(ngModel)]="geoLocationHighAccuracy"
+    <input type="checkbox"
+           [checked]="geoLocationHighAccuracy"
+           (change)="geoLocationHighAccuracy = !geoLocationHighAccuracy; formChanged()"
            id="GeoLocationHighAccuracy"
-           name="GeoLocationHighAccuracy"
-           placeholder="Geo Location High Accuracy">
+           name="GeoLocationHighAccuracy" />
 </div>
 
 <div class="form-row">
     <label class="form-label" for="DeviceName">Device Name: </label>
     <input [(ngModel)]="deviceName"
+           (change)="formChanged()"
            id="DeviceName"
            name="DeviceName"
            placeholder="Device Name">
@@ -93,26 +104,31 @@
 
 <div class="form-row">
     <label class="form-label" for="PalmTouchTrigger">Palm Touch Trigger: </label>
-    <input [(ngModel)]="palmTouchTrigger"
+    <input type="checkbox"
+           [checked]="palmTouchTrigger"
+           (change)="palmTouchTrigger = !palmTouchTrigger; formChanged()"
            id="PalmTouchTrigger"
-           name="PalmTouchTrigger"
-           placeholder="Palm Touch Trigger">
+           name="PalmTouchTrigger" />
 </div>
 
 <div class="form-row">
     <label class="form-label" for="DemoMode">Demo Mode: </label>
-    <input [(ngModel)]="demoMode"
+    <input type="checkbox" 
+           [checked]="demoMode" 
+           (change)="demoMode = !demoMode; formChanged()"
            id="DemoMode"
-           name="DemoMode"
-           placeholder="Demo Mode">
+           name="DemoMode" />
 </div>
 
 <div class="form-row">
     <label class="form-label" for="VerboseLogging">Verbose Logging: </label>
-    <input [(ngModel)]="verboseLogging"
+    <input type="checkbox"
+           [checked]="verboseLogging"
+           (change)="verboseLogging = !verboseLogging; formChanged()"
            id="VerboseLogging"
-           name="VerboseLogging"
-           placeholder="Verbose Logging">
+           name="VerboseLogging" />
 </div>
 
 <button style="margin-top:20px" (click)="save()">Save Changes</button>
+
+<div style="color:green" *ngIf="updated">the data has been updated successfully</div>
