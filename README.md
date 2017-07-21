@@ -52,11 +52,14 @@ As shown below:
 ### Get Started
 
 https://angular.io/guide/visual-studio-2015
+
 https://stackoverflow.com/questions/44793859/rxjs-subject-d-ts-error-class-subjectt-incorrectly-extends-base-class-obs
+
 https://johnpapa.net/angular-2-styles/
 
 ### Hero Example:
 https://angular.io/tutorial/toh-pt1
+
 https://angular.io/tutorial/toh-pt6
 
 https://stackoverflow.com/questions/36803389/angular2-async-pipe-not-does-not-fill-object-data-into-template
@@ -81,10 +84,14 @@ https://stackoverflow.com/questions/34840969/cannot-find-a-differ-supporting-obj
 
 ### Unit Test
 https://angular.io/guide/testing
+
 https://angular.io/generated/live-examples/testing/app-specs.eplnkr.html
+
 https://taco.visualstudio.com/en-us/docs/unit-test-03-basic-testing/
+
 https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2
 http://angularfirst.com/getting-started-with-npm-in-visual-studio/
+
 https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2
 https://semaphoreci.com/community/tutorials/testing-angular-2-http-services-with-jasmine
 http://www.c-sharpcorner.com/article/how-to-perform-unit-test-using-jasmine-in-angular-2-day-282/
