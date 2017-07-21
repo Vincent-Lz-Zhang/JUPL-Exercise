@@ -111,19 +111,35 @@ describe('RuntimeSettingsService (mockBackend)', () => {
         }));
 
 
-    describe('when getHeroes', () => {
+    describe('when getRuntimeSettings', () => {
         let backend: MockBackend;
         let service: RuntimeSettingsService;
         let settings_be: string;
+        //let settings_be: RuntimeSettings;
         let response: Response;
 
         beforeEach(inject([Http, XHRBackend], (http: Http, be: MockBackend) => {
             backend = be;
             service = new RuntimeSettingsService(http);
             settings_be = JSON.stringify(makeRuntimeSettings());
-            let options = new ResponseOptions({ status: 200, body: { data: settings_be } });
+            let options = new ResponseOptions({ status: 200, body: makeRuntimeSettings() });
             response = new Response(options);
         }));
+
+        it('should have expected fake settings (then)', async(inject([], () => {
+            backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
+
+            service.getRuntimeSettings()
+                .then(settings => {
+                    expect(settings.ReportInterval).toBe(6080, 'should have expected 6080');
+                });
+        })));
+
+
+
+
+
+
 
     });
 

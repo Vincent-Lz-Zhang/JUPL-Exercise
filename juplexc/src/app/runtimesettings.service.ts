@@ -22,6 +22,8 @@ export class RuntimeSettingsService {
         })
             .toPromise()
             .then(function (response) { // arrow function seems not to be debugged with breakpoint
+                // in case of real http request, response is the body of the http response
+                // in case of mocked backend, response is the http response itself
                 let temp: RuntimeSettings = response.json().Model.RuntimeSettings;
                 return temp;
             })
