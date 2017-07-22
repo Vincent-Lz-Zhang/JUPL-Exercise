@@ -1,24 +1,34 @@
 # Exercise From JUPL
 
-# Instructions
+## Instructions 
 
-To run the unit tests in Karma, you need to make the following changes.
+### Build It Locally
+
+I use Visual Studio to start off, and it might be better to stick to it. The instructions for setting up Visual Studio can be found [here](https://angular.io/guide/visual-studio-2015). 
+
+Please note that, if your VS version is lower than 2017, you might need to change some settings.
+
+If you receive IIS errors when opening the page in your browser, set the src/app/index.html as the start page, and try it again.
+
+### Run Unit Test 
+
+To run the unit tests in Karma, you need to make the following changes to the config.
 
 Modify systemjs.config.js, from 
-```sh
+```javascript
 paths: {
   'npm:': '/node_modules/'
 }
 ```
 to
-```sh
+```javascript
 paths: {
   'npm:': '/base/node_modules/'
 }
 ```
 
 Modify app.component.ts, from 
-```sh
+```javascript
 @Component({
     selector: 'my-app',
     templateUrl: 'app/app.component.html',
@@ -27,7 +37,7 @@ Modify app.component.ts, from
 })
 ```
 to
-```sh
+```javascript
 @Component({
     selector: 'my-app',
     templateUrl: 'app.component.html',
@@ -45,6 +55,9 @@ As shown below:
 
 
 ![N|Solid](https://zlxadhkust.files.wordpress.com/2017/07/002.png)
+
+
+NOTE: You need to UNDO those changes to be able to run the app.
 
 
 # References

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { RuntimeSettings } from './runtimesettings';
 import { RuntimeSettingsService } from './runtimesettings.service';
 import { OnInit } from '@angular/core';
+import { AppSettings } from './appSettings';
 
 @Component({
     selector: 'my-app',
@@ -32,6 +33,8 @@ export class AppComponent implements OnInit {
     // control the visibility of loading animation
     isLoading: boolean = false;
     updated: boolean = false;
+    promptText: string = '';
+    colorName: string = '';
 
     constructor(private runtimeSettingsService: RuntimeSettingsService) { }
 
@@ -109,12 +112,25 @@ export class AppComponent implements OnInit {
             () => {
                 console.log('returned to component method');
                 this.updated = true;
+                this.colorName = AppSettings.PROMPT_COLOR_NORMAL;
+                this.promptText = AppSettings.PROMPT_UPDATE_SUCCESS;
                 return this.getRuntimeSettings();
             })
-            .catch(reason => {
-                console.error('Oops¬ ', reason);
+            .catch(response => {
+                if (response && response.status) {
+                    if (400 == response.status) {
+                        console.log('400: ', response.json().Message); // log the real error info
+                        this.updated = true;
+                        this.colorName = AppSettings.PROMPT_COLOR_DANGER;
+                        this.promptText = AppSettings.PROMPT_UPDATE_FAILURE_1;
+                    }
+                    else if (500 == response.status) {
+                        this.updated = true;
+                        this.colorName = AppSettings.PROMPT_COLOR_DANGER;
+                        this.promptText = AppSettings.PROMPT_UPDATE_FAILURE_2;
+                    }
+                }
                 this.isLoading = false;
-            // TODO: visual prompt to user
         });
 
     }

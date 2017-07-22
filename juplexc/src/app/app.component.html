@@ -158,4 +158,4 @@
 
 <button style="margin-top:20px" (click)="save()">Save Changes</button>
 
-<div style="color:green" *ngIf="updated">the data has been updated successfully</div>
+<div [style.color]="colorName" *ngIf="updated">{{promptText}}</div>
