@@ -32,6 +32,7 @@ class ff {
     Model: mm;
 }
 
+//------ mock the object that server deliver to client when retrieving runtime settings --------//
 function makeResponseData(): ff {
     return {
         VigilId: 40072,
@@ -60,6 +61,7 @@ function makeResponseData(): ff {
     }
 }
 
+//------ mock the object that client pushes to server when updating runtime settings --------//
 function makeRuntimeSettings(): RuntimeSettings {
     return {
         ReportInterval: 10,
@@ -82,7 +84,8 @@ function makeRuntimeSettings(): RuntimeSettings {
     }
 }
 
-describe('RuntimeSettingsService (mockBackend)', () => {
+//------ test --------//
+describe('RuntimeSettingsService (mockBackend), ', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
@@ -110,8 +113,8 @@ describe('RuntimeSettingsService (mockBackend)', () => {
             expect(backend).not.toBeNull('backend should be provided');
         }));
 
-
-    describe('when getRuntimeSettings', () => {
+    //------ test GET getRuntimeSettings() --------//
+    describe('when calling getRuntimeSettings(), ', () => {
         let backend: MockBackend;
         let service: RuntimeSettingsService;
         let response: Response;
@@ -125,7 +128,6 @@ describe('RuntimeSettingsService (mockBackend)', () => {
 
         it('should have expected fake settings of ReportInterval', async(inject([], () => {
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
-
             service.getRuntimeSettings()
                 .then(settings => {
                     expect(settings.ReportInterval).toBe(6080, 'should have expected 6080');
@@ -134,7 +136,6 @@ describe('RuntimeSettingsService (mockBackend)', () => {
 
         it('should have expected fake settings of GeoLocationHighAccuracy', async(inject([], () => {
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
-
             service.getRuntimeSettings()
                 .then(settings => {
                     expect(settings.GeoLocationHighAccuracy).toBe(true, 'should have expected true');
@@ -143,7 +144,6 @@ describe('RuntimeSettingsService (mockBackend)', () => {
 
         it('should have expected fake settings of CmfPhoneNumber, PalmTouchTrigger and TouchTriggerCooldownPeriod', async(inject([], () => {
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(response));
-
             service.getRuntimeSettings()
                 .then(settings => {
                     expect(
@@ -157,30 +157,25 @@ describe('RuntimeSettingsService (mockBackend)', () => {
         it('should treat 404 as an exception', async(inject([], () => {
             let resp = new Response(new ResponseOptions({ status: 404 }));
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-
             service.getRuntimeSettings()
                 .then(s => {
                     // failure is the expected test result
                     fail('should never reach here');
                 })
                 .catch(err => {
-                    //console.log('Vince: ' + err);
                     expect(err).toBe("Cannot read property 'Model' of null");  // TODO:  err should be the response object
                 });
-            
         })));
 
         it('should treat 500 as an exception', async(inject([], () => {
             let resp = new Response(new ResponseOptions({ status: 500 }));
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
-
             service.getRuntimeSettings()
                 .then(s => {
                     // failure is the expected test result
                     fail('should never reach here');
                 })
                 .catch(err => {
-                    //console.log('Vince: ' + err);
                     expect(err).toBe("Cannot read property 'Model' of null");
                 });
 
@@ -188,20 +183,18 @@ describe('RuntimeSettingsService (mockBackend)', () => {
     });
 
 
-    describe('when updateRuntimeSettings', () => {
+    //------ test PUT updateRuntimeSettings() --------//
+    describe('when calling updateRuntimeSettings(), ', () => {
         let backend: MockBackend;
         let service: RuntimeSettingsService;
-        //let settings_be: string;
         let response: Response;
 
         beforeEach(inject([Http, XHRBackend], (http: Http, be: MockBackend) => {
             backend = be;
             service = new RuntimeSettingsService(http);
-            //settings_be = JSON.stringify(makeRuntimeSettings());
             let options = new ResponseOptions({ status: 204 });
             response = new Response(options);
         }));
-
 
         it('should have expected data in the request', async(inject([], () => {
             backend.connections.subscribe(
@@ -226,62 +219,58 @@ describe('RuntimeSettingsService (mockBackend)', () => {
                         && body.RuntimeSettings.TouchTriggerCooldownPeriod == 67
                         && body.RuntimeSettings.VerboseLogging == true
                     ).toBeTruthy('the data pushed through the PUT api should be....');
-                    //console.log(body);
                     c.mockRespond(response);
                 }
             );
             service.updateRuntimeSettings(makeRuntimeSettings());
         })));
 
-
-
-        it('should treat 400 as an exception', async(inject([], () => {
+        it('should treat http status 400 as an exception', async(inject([], () => {
             let resp = new Response(
                 new ResponseOptions({ status: 400, body: '{"Message": "The request is invalid."}' })    // Can not convert Null to Int32.
             );
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
             service.updateRuntimeSettings(makeRuntimeSettings())
                 .then(s => {
-                    //console.log('V: ' + s.json().Message);
-                    //fail('should never reach here');
                     // TODO: failure is the expected test result, the execution should not get here, but it does reach here
+                    fail('The promise should be rejected, and the execution should never reach here');
+
+                    //console.log('V: ' + s.json().Message);
+                    /*
                     expect(400 == s.status
                         && 'The request is invalid.' == s.json().Message)
                         .toBeTruthy('the status code should be 400');
+                    */
                 })
                 .catch(err => {
                     console.log('Vince: ' + err);
                     expect(err.json().Message).toBe('The request is invalid.'); 
                     // TODO: the execution should get here, but it does not get here
                 });
-
         })));
 
-        it('should treat 500 as an exception', async(inject([], () => {
+        it('should treat http status 500 as an exception', async(inject([], () => {
             let resp = new Response(
                 new ResponseOptions({ status: 500, body: '{"Message": "Server Internal Error."}' }) 
             );
-
-            backend.connections.subscribe(
-                (c: MockConnection) => c.mockRespond(resp)
-            );
-
+            backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
             service.updateRuntimeSettings(makeRuntimeSettings())
                 .then(s => {
-                    console.log('V resolve: ' + s);
-                    console.log('V resolve: ' + s.json().Message);
-                    //fail('should never reach here');
                     // TODO: failure is the expected test result, the execution should not get here, but it does reach here
+                    fail('The promise should be rejected, and the execution should never reach here');
+
+                    //console.log('V resolve: ' + s.json().Message);
+                    /*
                     expect(500 == s.status
                         && 'Server Internal Error.' == s.json().Message)
                         .toBeTruthy('the status code should be 400');
+                    */
                 })
                 .catch(err => {
                     console.log('V catch: ' + err);
                     expect(err.json().Message).toBe('Server Internal Error.');
                     // TODO: the execution should get here, but it does not get here
                 });
-
         })));
 
 

@@ -21,9 +21,7 @@ export class RuntimeSettingsService {
             headers: this.headers
         })
             .toPromise()
-            .then(function (response) { // arrow function seems not to be debugged with breakpoint
-                // in case of real http request, response is the body of the http response
-                // in case of mocked backend, response is the http response itself
+            .then(function (response) { // arrow function seems to be hard to debug with breakpoints
                 let temp: RuntimeSettings = response.json().Model.RuntimeSettings;
                 return temp;
             })
@@ -39,7 +37,7 @@ export class RuntimeSettingsService {
         return this.http
             .put(AppSettings.API_ENDPOINT, JSON.stringify(data), { headers: this.headers_put })
             .toPromise()
-            .catch(this.handleError);   // TODO: may handle twice
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

@@ -67,7 +67,6 @@ export class AppComponent implements OnInit {
             .catch(reason => {
                 console.error('Oops¬ ', reason); 
                 this.isLoading = false;
-                // TODO: visual prompt to user
             });
         
     }
@@ -85,7 +84,6 @@ export class AppComponent implements OnInit {
     }
 
     updateRuntimeSettings(): void {
-        //console.log('here: ' + this.deviceName);
         let settings: RuntimeSettings = {
             ReportInterval: Number(this.reportInterval),
             PingInterval: Number(this.pingInterval),

@@ -45,8 +45,8 @@ to
 ```javascript
 @Component({
     selector: 'my-app',
-    templateUrl: 'app.component.html',
-    styleUrls: ['app.component.css'],
+    templateUrl: 'base/src/app/app.component.html',
+    styleUrls: ['base/src/app/app.component.css'],
     providers: [RuntimeSettingsService]
 })
 ```
@@ -62,7 +62,7 @@ As shown below:
 ![N|Solid](https://zlxadhkust.files.wordpress.com/2017/07/002.png)
 
 
-NOTE: You need to UNDO those changes to be able to run the app in non-testing mode.
+NOTE: You need to UNDO those changes to be able to run the app in non-testing mode. In addition, for unknown reasons, the environment seems not to be stable, sometimes things might be broken, and rebooting your PC may help.
 
 
 # References
