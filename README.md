@@ -6,9 +6,14 @@
 
 I use Visual Studio to start off, and it might be better to stick to it. The instructions for setting up Visual Studio can be found [here](https://angular.io/guide/visual-studio-2015). 
 
-Please note that, if your VS version is lower than 2017, you might need to change some settings.
+Please note that, if your VS version is lower than 2017, you might need to change some settings. And then checkout the repo, install the packages, run it from VS.
 
 If you receive IIS errors when opening the page in your browser, set the src/app/index.html as the start page, and try it again.
+
+
+![N|Solid](https://zlxadhkust.files.wordpress.com/2017/07/upd-fail.png)
+
+
 
 ### Run Unit Test 
 
@@ -57,7 +62,7 @@ As shown below:
 ![N|Solid](https://zlxadhkust.files.wordpress.com/2017/07/002.png)
 
 
-NOTE: You need to UNDO those changes to be able to run the app.
+NOTE: You need to UNDO those changes to be able to run the app in non-testing mode.
 
 
 # References
