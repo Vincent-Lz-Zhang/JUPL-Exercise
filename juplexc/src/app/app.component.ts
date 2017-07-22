@@ -6,8 +6,8 @@ import { AppSettings } from './appSettings';
 
 @Component({
     selector: 'my-app',
-    templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css'],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
     providers: [RuntimeSettingsService]
 })
 export class AppComponent implements OnInit {

@@ -31,25 +31,6 @@ paths: {
   'npm:': '/base/node_modules/'
 }
 ```
-
-Modify app.component.ts, from 
-```javascript
-@Component({
-    selector: 'my-app',
-    templateUrl: 'app/app.component.html',
-    styleUrls: ['app/app.component.css'],
-    providers: [RuntimeSettingsService]
-})
-```
-to
-```javascript
-@Component({
-    selector: 'my-app',
-    templateUrl: 'base/src/app/app.component.html',
-    styleUrls: ['base/src/app/app.component.css'],
-    providers: [RuntimeSettingsService]
-})
-```
 	
 And then you can run the command on the root folder to start Karma:
 ```sh
