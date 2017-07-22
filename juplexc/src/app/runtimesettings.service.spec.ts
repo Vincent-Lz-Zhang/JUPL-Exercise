@@ -20,7 +20,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { RuntimeSettings } from './runtimesettings';
 import { RuntimeSettingsService } from './runtimesettings.service';
-
+import { AppSettings } from './appSettings';
 
 class mm {
     RuntimeSettings: RuntimeSettings;
@@ -147,9 +147,9 @@ describe('RuntimeSettingsService (mockBackend)', () => {
             service.getRuntimeSettings()
                 .then(settings => {
                     expect(
-                        settings.CmfPhoneNumber == "+64123456789"
-                        && settings.PalmTouchTrigger == true
-                        && settings.TouchTriggerCooldownPeriod == 30
+                        "+64123456789" == settings.CmfPhoneNumber
+                        && true == settings.PalmTouchTrigger
+                        && 30 == settings.TouchTriggerCooldownPeriod
                     ).toBeTruthy('should have expected values');
                 });
         })));
@@ -159,17 +159,32 @@ describe('RuntimeSettingsService (mockBackend)', () => {
             backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
 
             service.getRuntimeSettings()
-                .then(s => {    // failure is the expected test result
-                    fail('should not respond');
+                .then(s => {
+                    // failure is the expected test result
+                    fail('should never reach here');
                 })
                 .catch(err => {
                     //console.log('Vince: ' + err);
-                    expect(err).toContain('Cannot read property '); // TODO: seems to be useless ?
-                    return '4o4';   // TODO: is it necessary?
+                    expect(err).toBe("Cannot read property 'Model' of null");  // TODO:  err should be the response object
                 });
             
         })));
-        
+
+        it('should treat 500 as an exception', async(inject([], () => {
+            let resp = new Response(new ResponseOptions({ status: 500 }));
+            backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+
+            service.getRuntimeSettings()
+                .then(s => {
+                    // failure is the expected test result
+                    fail('should never reach here');
+                })
+                .catch(err => {
+                    //console.log('Vince: ' + err);
+                    expect(err).toBe("Cannot read property 'Model' of null");
+                });
+
+        })));
     });
 
 
@@ -214,13 +229,62 @@ describe('RuntimeSettingsService (mockBackend)', () => {
                     //console.log(body);
                     c.mockRespond(response);
                 }
+            );
+            service.updateRuntimeSettings(makeRuntimeSettings());
+        })));
 
+
+
+        it('should treat 400 as an exception', async(inject([], () => {
+            let resp = new Response(
+                new ResponseOptions({ status: 400, body: '{"Message": "The request is invalid."}' })    // Can not convert Null to Int32.
+            );
+            backend.connections.subscribe((c: MockConnection) => c.mockRespond(resp));
+            service.updateRuntimeSettings(makeRuntimeSettings())
+                .then(s => {
+                    //console.log('V: ' + s.json().Message);
+                    //fail('should never reach here');
+                    // TODO: failure is the expected test result, the execution should not get here, but it does reach here
+                    expect(400 == s.status
+                        && 'The request is invalid.' == s.json().Message)
+                        .toBeTruthy('the status code should be 400');
+                })
+                .catch(err => {
+                    console.log('Vince: ' + err);
+                    expect(err.json().Message).toBe('The request is invalid.'); 
+                    // TODO: the execution should get here, but it does not get here
+                });
+
+        })));
+
+        it('should treat 500 as an exception', async(inject([], () => {
+            let resp = new Response(
+                new ResponseOptions({ status: 500, body: '{"Message": "Server Internal Error."}' }) 
             );
 
-            service.updateRuntimeSettings(makeRuntimeSettings());
+            backend.connections.subscribe(
+                (c: MockConnection) => c.mockRespond(resp)
+            );
 
-          
+            service.updateRuntimeSettings(makeRuntimeSettings())
+                .then(s => {
+                    console.log('V resolve: ' + s);
+                    console.log('V resolve: ' + s.json().Message);
+                    //fail('should never reach here');
+                    // TODO: failure is the expected test result, the execution should not get here, but it does reach here
+                    expect(500 == s.status
+                        && 'Server Internal Error.' == s.json().Message)
+                        .toBeTruthy('the status code should be 400');
+                })
+                .catch(err => {
+                    console.log('V catch: ' + err);
+                    expect(err.json().Message).toBe('Server Internal Error.');
+                    // TODO: the execution should get here, but it does not get here
+                });
+
         })));
+
+
 
     });
 

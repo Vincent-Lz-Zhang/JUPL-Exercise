@@ -30,7 +30,7 @@ export class RuntimeSettingsService {
             .catch(this.handleError);
     }
 
-    updateRuntimeSettings(settings: RuntimeSettings): Promise<RuntimeSettings> {
+    updateRuntimeSettings(settings: RuntimeSettings): Promise<any> {
         // assemble the data
         let data: any = {
             RuntimeSettings: settings
