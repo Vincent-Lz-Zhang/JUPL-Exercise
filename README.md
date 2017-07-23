@@ -48,6 +48,7 @@ As shown below:
  * form validation
  * probably decouple component, presentation and calling service
  * adding break point in arrow function for debugging
+ * customise the deployment procedure for Azure
 
 # Problems
 
