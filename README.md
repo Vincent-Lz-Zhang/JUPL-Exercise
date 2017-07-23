@@ -66,7 +66,7 @@ https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-moc
 ### Get Started
 
 https://angular.io/guide/visual-studio-2015
-https://stackoverflow.com/questions/44793859/rxjs-subject-d-ts-error-class-subjectt-incorrectly-extends-base-class-obs
+https://stackoverflow.com/questions/44793859/rxjs-subject-d-ts-error-class-subjectt-incorrectly-extends-base-class-obs  
 https://johnpapa.net/angular-2-styles/
 
 ### Hero Example:
