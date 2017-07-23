@@ -8,7 +8,7 @@ I use Visual Studio to start off, and it might be better to stick to it. The ins
 
 Please note that, if your VS version is lower than 2017, you might need to change some settings. And then checkout the repo, install the packages, run it from VS.
 
-If you receive IIS errors when opening the page in your browser, set the src/app/index.html as the start page, and try it again.
+If you receive IIS errors when opening the page in your browser, set the `src/app/index.html` as the start page, and try it again.
 
 
 ![N|Solid](https://zlxadhkust.files.wordpress.com/2017/07/upd-fail.png)
@@ -19,7 +19,7 @@ If you receive IIS errors when opening the page in your browser, set the src/app
 
 To run the unit tests in Karma, you need to make the following changes to the config.
 
-Modify systemjs.config.js, from 
+Modify `src/systemjs.config.js`, from 
 ```javascript
 paths: {
   'npm:': '/node_modules/'
@@ -51,8 +51,8 @@ As shown below:
 # Problems
 
 
-[Karma cannot find the external template or style file](https://stackoverflow.com/questions/45240395/angular-2-karma-cannot-find-the-external-template-or-style-file)
-[HTTP Promise isn't Rejected When MockConnection Returns 400 http Status](https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-mockconnection-returns-400-http-status)
+[Karma cannot find the external template or style file](https://stackoverflow.com/questions/45240395/angular-2-karma-cannot-find-the-external-template-or-style-file)  
+[HTTP Promise isn't Rejected When MockConnection Returns 400 http Status](https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-mockconnection-returns-400-http-status)  
 [Deploy The Angular 2 Quick Start Example On Azure](https://stackoverflow.com/questions/45253823/deploy-angular-2-quick-start-example-on-azure)
 
 
