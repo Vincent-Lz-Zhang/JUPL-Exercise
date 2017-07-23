@@ -44,12 +44,11 @@ As shown below:
 
 
 > **Note:**
-
 > You need to UNDO those changes to be able to run the app in non-testing mode. In addition, for unknown reasons, the environment seems not to be stable, sometimes things might be broken, and rebooting your PC may help.
 
 
 
-# Questions
+# Problems
 
  [Deploy The Angular 2 Quick Start Example On Azure][1]
 
@@ -71,7 +70,7 @@ https://johnpapa.net/angular-2-styles/
 
 ### Hero Example:
 https://angular.io/tutorial/toh-pt1  
-https://angular.io/tutorial/toh-pt6
+https://angular.io/tutorial/toh-pt6  
 https://stackoverflow.com/questions/36803389/angular2-async-pipe-not-does-not-fill-object-data-into-template
 https://stackoverflow.com/questions/34363161/angular-2-displaying-async-object-data-from-promise
 https://stackoverflow.com/questions/34980973/how-to-bind-a-promise-to-a-component-property
@@ -94,11 +93,10 @@ https://stackoverflow.com/questions/34840969/cannot-find-a-differ-supporting-obj
 
 ### Unit Test
 https://angular.io/guide/testing  
-https://angular.io/generated/live-examples/testing/app-specs.eplnkr.html
+https://angular.io/generated/live-examples/testing/app-specs.eplnkr.html  
 https://taco.visualstudio.com/en-us/docs/unit-test-03-basic-testing/  
-https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2
+https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2  
 http://angularfirst.com/getting-started-with-npm-in-visual-studio/
-https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2
 https://semaphoreci.com/community/tutorials/testing-angular-2-http-services-with-jasmine
 http://www.c-sharpcorner.com/article/how-to-perform-unit-test-using-jasmine-in-angular-2-day-282/
 https://stackoverflow.com/questions/17469928/how-to-use-multiple-expect-in-jasmine
