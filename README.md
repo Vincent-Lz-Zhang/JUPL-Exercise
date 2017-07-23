@@ -10,10 +10,7 @@ Please note that, if your VS version is lower than 2017, you might need to chang
 
 If you receive IIS errors when opening the page in your browser, set the `src/app/index.html` as the start page, and try it again.
 
-
 ![N|Solid](https://zlxadhkust.files.wordpress.com/2017/07/upd-fail.png)
-
-
 
 ### Run Unit Test 
 
@@ -31,7 +28,7 @@ paths: {
   'npm:': '/base/node_modules/'
 }
 ```
-	
+
 And then you can run the command on the root folder to start Karma:
 ```sh
 npm test
@@ -39,29 +36,26 @@ npm test
 
 As shown below:
 
-
 ![N|Solid](https://zlxadhkust.files.wordpress.com/2017/07/002.png)
-
 
 > **Note:**
 > You need to UNDO those changes to be able to run the app in non-testing mode. In addition, for unknown reasons, the environment seems not to be stable, sometimes things might be broken, and rebooting your PC may help.
 
+# What Next
 
+ * data binding of object props
+ * generate form dynamically
+ * form validation
+ * probably decouple component, presentation and calling service
+ * adding break point in arrow function for debugging
 
 # Problems
-
 
 [Karma cannot find the external template or style files](https://stackoverflow.com/questions/45240395/angular-2-karma-cannot-find-the-external-template-or-style-file)  
 [HTTP Promise isn't Rejected When MockConnection Returns 400 HTTP Status](https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-mockconnection-returns-400-http-status)  
 [Deploy The Angular 2 Quick Start Example On Azure](https://stackoverflow.com/questions/45253823/deploy-angular-2-quick-start-example-on-azure)
 
-
-
-
-
 # References
-
-
 
 ### Get Started
 
@@ -70,6 +64,7 @@ https://stackoverflow.com/questions/44793859/rxjs-subject-d-ts-error-class-subje
 https://johnpapa.net/angular-2-styles/
 
 ### Hero Example:
+
 https://angular.io/tutorial/toh-pt1  
 https://angular.io/tutorial/toh-pt6  
 https://stackoverflow.com/questions/36803389/angular2-async-pipe-not-does-not-fill-object-data-into-template
@@ -89,10 +84,12 @@ https://stackoverflow.com/questions/40207746/angular-2-form-with-array-of-object
 https://stackoverflow.com/questions/37831440/angular-2-using-template-reference-variable-ngform-as-input-binding
 
 ### Observable
+
 https://stackoverflow.com/questions/35018916/angular-2-interpolation-and-binding-with-async-http-request
 https://stackoverflow.com/questions/34840969/cannot-find-a-differ-supporting-object-async-pipe-and-ngfor-problems-in-angular?rq=1
 
 ### Unit Test
+
 https://angular.io/guide/testing  
 https://angular.io/generated/live-examples/testing/app-specs.eplnkr.html  
 https://taco.visualstudio.com/en-us/docs/unit-test-03-basic-testing/  
@@ -106,6 +103,7 @@ https://stackoverflow.com/questions/40086629/error-no-provider-for-httpservice-i
 
 
 ### Azure deployment
+
 http://www.jamessturtevant.com/posts/How-to-add-edit-and-remove-files-in-your-azure-webapp-using-the-kudu-service-dashboard/
 
 
