@@ -50,10 +50,11 @@ As shown below:
 
 # Problems
 
- [Deploy The Angular 2 Quick Start Example On Azure][1]
 
+[Karma cannot find the external template or style file](https://stackoverflow.com/questions/45240395/angular-2-karma-cannot-find-the-external-template-or-style-file)
+[HTTP Promise isn't Rejected When MockConnection Returns 400 http Status](https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-mockconnection-returns-400-http-status)
+[Deploy The Angular 2 Quick Start Example On Azure](https://stackoverflow.com/questions/45253823/deploy-angular-2-quick-start-example-on-azure)
 
-https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-mockconnection-returns-400-http-status
 
 
 
@@ -96,12 +97,13 @@ https://angular.io/guide/testing
 https://angular.io/generated/live-examples/testing/app-specs.eplnkr.html  
 https://taco.visualstudio.com/en-us/docs/unit-test-03-basic-testing/  
 https://stackoverflow.com/questions/39406220/how-to-do-a-unit-test-for-http-post-put-delete-using-mockbackend-in-angular2  
-http://angularfirst.com/getting-started-with-npm-in-visual-studio/
-https://semaphoreci.com/community/tutorials/testing-angular-2-http-services-with-jasmine
-http://www.c-sharpcorner.com/article/how-to-perform-unit-test-using-jasmine-in-angular-2-day-282/
-https://stackoverflow.com/questions/17469928/how-to-use-multiple-expect-in-jasmine
+http://angularfirst.com/getting-started-with-npm-in-visual-studio/  
+https://semaphoreci.com/community/tutorials/testing-angular-2-http-services-with-jasmine  
+http://www.c-sharpcorner.com/article/how-to-perform-unit-test-using-jasmine-in-angular-2-day-282/  
+https://stackoverflow.com/questions/17469928/how-to-use-multiple-expect-in-jasmine  
 https://stackoverflow.com/questions/40373099/angular2-quickstart-tutorial-breaking-karma-tests-cant-bind-to-ngmodel-sin
 https://stackoverflow.com/questions/40086629/error-no-provider-for-httpservice-in-karma-test
+
 
 ### Azure deployment
 http://www.jamessturtevant.com/posts/How-to-add-edit-and-remove-files-in-your-azure-webapp-using-the-kudu-service-dashboard/
@@ -110,4 +112,3 @@ http://www.jamessturtevant.com/posts/How-to-add-edit-and-remove-files-in-your-az
 
 
 
-  [1]: https://stackoverflow.com/questions/45253823/deploy-angular-2-quick-start-example-on-azure
