@@ -51,8 +51,8 @@ As shown below:
 # Problems
 
 
-[Karma cannot find the external template or style file](https://stackoverflow.com/questions/45240395/angular-2-karma-cannot-find-the-external-template-or-style-file)  
-[HTTP Promise isn't Rejected When MockConnection Returns 400 http Status](https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-mockconnection-returns-400-http-status)  
+[Karma cannot find the external template or style files](https://stackoverflow.com/questions/45240395/angular-2-karma-cannot-find-the-external-template-or-style-file)  
+[HTTP Promise isn't Rejected When MockConnection Returns 400 HTTP Status](https://stackoverflow.com/questions/45252119/http-promise-isnt-rejected-when-mockconnection-returns-400-http-status)  
 [Deploy The Angular 2 Quick Start Example On Azure](https://stackoverflow.com/questions/45253823/deploy-angular-2-quick-start-example-on-azure)
 
 
