@@ -1,6 +1,6 @@
 ﻿
 <h2>Runtime Settings</h2>
-<div style="color:crimson" class="form-prompt" *ngIf="isLoading">loading data...</div>
+<div class="form-prompt" *ngIf="isLoading">loading data...</div>
 
 
 <div class="form-row">
@@ -156,6 +156,6 @@
            name="VerboseLogging" />
 </div>
 
-<button style="margin-top:20px" (click)="save()">Save Changes</button>
+<button class="form-button" (click)="save()">Save Changes</button>
 
 <div [style.color]="colorName" *ngIf="updated">{{promptText}}</div>
