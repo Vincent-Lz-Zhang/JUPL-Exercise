@@ -16,13 +16,13 @@ If you receive IIS errors when opening the page in your browser, set the `src/ap
 
 To run the unit tests in Karma, you need to make the following changes to the config.
 
-Modify `src/systemjs.config.js`, from 
+Open `src/systemjs.config.js`, modify 
 ```javascript
 paths: {
   'npm:': '/node_modules/'
 }
 ```
-to
+to read as
 ```javascript
 paths: {
   'npm:': '/base/node_modules/'
